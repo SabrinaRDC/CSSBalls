@@ -1,9 +1,9 @@
 let balls = [];
-let gravity = 9.8;
+let gravity = 80;
 let FPS = 60;
-let sizeX = 500;
+let sizeX = 1000;
 let sizeY = 500;
-let bounceEfficiency = 1;
+let bounceEfficiency = 0.93;
 function createBall(diameter, color = "000000", posX = 0, posY = 0, volX = 0, volY = 0 ) {
     let setID;
     if (balls[(balls.length - 1)] !== undefined){
