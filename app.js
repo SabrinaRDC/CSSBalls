@@ -3,7 +3,8 @@ let FPS = 60;
 let gravity = 500;
 let sizeX = 1000;
 let sizeY = 500;
-let bounceEfficiency = 1;
+let bounceEfficiency = 0.95;
+let gapAdjust = 3;
 function createBall(diameter, color = "000000", posX = 0, posY = 0, volX = 0, volY = 0 ) {
     let setID;
     if (balls[(balls.length - 1)] !== undefined){
@@ -34,17 +35,17 @@ function calculateBall(){
             ball.volocity.x = ball.volocity.x * -1 * bounceEfficiency;
             ball.position.x = 0;
         };
-        if (ball.position.x + ball.diameter >= sizeX){
+        if (ball.position.x + ball.diameter - gapAdjust > sizeX){
             ball.volocity.x = ball.volocity.x * -1 * bounceEfficiency;
-            ball.position.x = sizeX - ball.diameter;
+            ball.position.x = sizeX - ball.diameter + gapAdjust;
         };
         if (ball.position.y < 0){
             ball.volocity.y = ball.volocity.y * -1 * bounceEfficiency;
             ball.position.y = 0;
         };
-        if (ball.position.y + ball.diameter >= sizeY){
+        if (ball.position.y + ball.diameter - gapAdjust > sizeY){
             ball.volocity.y = ball.volocity.y * -1 * bounceEfficiency;
-            ball.position.y = sizeY - ball.diameter;
+            ball.position.y = sizeY - ball.diameter + gapAdjust;
         };
     })
 };
